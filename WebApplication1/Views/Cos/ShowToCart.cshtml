@@ -1,0 +1,76 @@
+﻿@model WebApplication1.Models.Cos
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cos de cumparaturi</h2>
+<br />
+@if (Model != null)
+{
+    if (Request.Cookies["userLogat"] != null)
+    {
+        <table class="table">
+            <thread>
+                <tr>
+                    <th>Nume</th>
+                    <th>Imagine</th>
+                    <th>Pret</th>
+                    <th>Cantitate</th>
+                    <th>Suma</th>
+                    <th>Sterge</th>
+                </tr>
+            </thread>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    double total = Convert.ToDouble(item.produsCos.Pret * item.cantitate);
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.produsCos.Nume)
+                        </td>
+                        <td>
+                            <img src="@Html.DisplayFor(model => item.produsCos.Imagine)" width="100" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.produsCos.Pret)lei
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("UpdateCantitate", "Cos"))
+                            {
+                                <input type="hidden" value="@item.produsCos.Id" name="IdCarte" />
+                                <input type="number" value="@item.cantitate" name="Cantitate" />
+                                <input type="submit" value="Update Cantitate" />
+                            }
+                        </td>
+                        <td>
+                            Total: @total lei
+                        </td>
+                        <td>
+                            <a href="/Cos/RemoveCos/@item.produsCos.Id">Elimina din cos</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="text-align:right">Total de plata: @Model.TotalMoney()</td>
+                </tr>
+            </tfoot>
+        </table>
+        @Html.ActionLink("Continua cumparaturile", "Index", "Carte")
+    }
+    else
+    {
+        <h5>
+            Nu exista produse adaugate in cosul de cumparaturi.
+        </h5>
+    }
+}
+else
+{
+    <h5>
+        Nu exista produse adaugate in cosul de cumparaturi.
+    </h5>}
+

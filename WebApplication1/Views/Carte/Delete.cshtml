@@ -1,0 +1,55 @@
+﻿@model WebApplication1.Models.Carte
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sterge carte</h2>
+<h3>Esti sigur ca vrei sa stergi aceasta carte?</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pret)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pret)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descriere)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sterge" class="btn btn-default" onclick="carteDelete();" /> |
+            @Html.ActionLink("Catre carti", "Index")
+        </div>
+    }
+</div>
+
+<script>
+    function carteDelete() {
+        alert('@TempData["DeleteCarte"]');
+    }
+</script>

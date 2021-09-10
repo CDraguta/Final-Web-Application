@@ -1,0 +1,78 @@
+﻿@model WebApplication1.Models.Reteta
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sterge reteta</h2>
+<h3>Esti sigur ca vrei sa stergi aceasta reteta?</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPublicare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPublicare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipMasa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipMasa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipBucatarie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipBucatarie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FelMancare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FelMancare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descriere)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sterge" class="btn btn-default" onclick="retetaDelete();"/> |
+            @Html.ActionLink("Catre retete", "Index")
+        </div>
+    }
+</div>
+
+<script>
+    function retetaDelete() {
+        alert('@TempData["DeleteReteta"]');
+    }
+</script>

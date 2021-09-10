@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="login">
+    <h2>
+        Bine ai venit, @HttpContext.Current.User.Identity.Name!
+    </h2>
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("Logout", "Utilizator", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+        }
+
+    }
+</div>
+<br />
+<img src="https://images.unsplash.com/photo-1569021998346-5762c8a548fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" width="600" />

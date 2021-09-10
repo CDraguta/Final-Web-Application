@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Blog culinar</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- bootstrap icon awesome-->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+
+        <div class="image-wrapper">
+            <img src="https://th.bing.com/th/id/R.41d12a7561ed002a649a03ad4d4cb4bb?rik=%2bdQvfZzpslKIEw&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f81-817013_broccoli-clipart-animated-cute-broccoli-png.png&ehk=edDO9O39GkuZd7cKukNkSkrbFNy52%2fOem1G79Lkh9k4%3d&risl=&pid=ImgRaw&r=0" alt="Imaginea nu exista..." width="200" height="200">
+        </div>
+
+        <h1 id="titlu">Express Food</h1>
+
+        <div class="inf">
+            <div class="social-links">
+                <a href="https://www.facebook.com/ExpressFoodDeliveryByCatalinStanciulescu" target="_blank">
+                    <img src="https://th.bing.com/th/id/OIP.GnLUjWCQ9om9O8jVngiFFgHaHa?pid=ImgDet&rs=1" width="25" />
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/express_food.ch/" target="_blank">
+                    <img src=" https://th.bing.com/th/id/OIP.-ZirgQE5pr8e7htQWowJIgHaHa?pid=ImgDet&rs=1" width="25" />
+                </a>
+            </div>
+
+            <div class="despre">
+                @Html.ActionLink("Despre noi", "Despre", "Home")
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <i class="fa fa-home" style="color:white"></i>
+                @Html.ActionLink("Acasa", "Index", "Retete")
+            </li>
+            <li>
+                <div class="dropdownCC">
+                    <button class="dropbtnCC">Retete Culinare <i class="fa fa-caret-down"></i></button>
+                    <div class="sub-meniu1">
+                        <ul>
+                            <li class="hover-meniu1">
+                                <a href="">
+                                    Tip masa <i class="fa fa-caret-right"></i>
+                                    <div class="meniu1">
+                                        <ul>
+                                            <li> @Html.ActionLink("Pranz", "Pranz", "Retete")</li>
+                                            <li> @Html.ActionLink("Fel Principal", "FelPrincipal", "Retete")</li>
+                                            <li> @Html.ActionLink("Desert", "Desert", "Retete")</li>
+                                            <li> @Html.ActionLink("Aperitiv", "Aperitiv", "Retete")</li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="hover-meniu1">
+                                <a href="">
+                                    Tip bucatarie <i class="fa fa-caret-right"></i>
+                                    <div class="meniu1">
+
+                                        <ul>
+                                            <li> @Html.ActionLink("Romaneasca", "Romaneasca", "Retete")</li>
+                                            <li> @Html.ActionLink("Asiatica", "Asiatica", "Retete")</li>
+                                            <li> @Html.ActionLink("Germana", "Germana", "Retete")</li>
+                                            <li> @Html.ActionLink("Italiana", "Italiana", "Retete")</li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="hover-meniu1">
+                                <a href="">
+                                    Fel de mancare <i class="fa fa-caret-right"></i>
+                                    <div class="meniu1">
+                                        <ul>
+                                            <li>@Html.ActionLink("Supe/Ciorbe", "SupeCiorbe", "Retete") </li>
+                                            <li>@Html.ActionLink("Prajituri/Torturi", "PrajituriTorturi", "Retete")</li>
+                                            <li>@Html.ActionLink("Legume", "Legume", "Retete")</li>
+                                            <li>@Html.ActionLink("Peste", "Peste", "Retete")</li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <i class="fa fa-book" style="color:white"></i>
+                @Html.ActionLink("Carti", "Index", "Carte")
+            <li>
+                <i class="fa fa-user-circle" style="color:white"></i>
+                @Html.ActionLink("Login", "Login", "Utilizator")
+            </li>
+            <li>
+                <i class="fa fa-cart-plus" style="color:white"></i>
+                @Html.ActionLink("Cos de cumparaturi", "ShowToCart", "Cos")
+            </li>
+        </ul>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; Corodi Drăguța-Mihaela ,Blog culinar-2021</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>
